@@ -79,4 +79,4 @@ Tell the user to **reload** Ghostty (**⌘⇧,** on macOS, **Ctrl⇧,** on Linux
 
 - Rename the theme files (breaks `theme = ad-astra-*` names).
 - Strip or add a file extension to the theme files.
-- Point users to unofficial downloads; prefer `https://github.com/ugi-dev/ghostty-ad-astra-theme` or their local clone.
+- Point users to official downloads; prefer `https://github.com/ugi-dev/ghostty-ad-astra-theme` or their local clone.
