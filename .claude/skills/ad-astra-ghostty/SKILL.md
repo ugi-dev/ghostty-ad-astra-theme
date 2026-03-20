@@ -1,16 +1,31 @@
 ---
 name: ad-astra-ghostty
 description: Installs the Ad Astra Ghostty color theme (dark/light) by copying theme files into Ghostty’s themes directory and setting `theme` in the user’s config. Use when the user wants Ad Astra on Ghostty, asks to install or apply this repo’s Ghostty theme, or mentions Ghostty theming together with Ad Astra.
+argument-hint: "[dark|light|system]"
 ---
 
 # Ad Astra for Ghostty
 
 Help the user **install and enable** the theme from this repository: `ad-astra-dark` and `ad-astra-light` (no file extension). Official references: [Ghostty themes](https://ghostty.org/docs/features/theme), [config locations](https://ghostty.org/docs/config).
 
+## Claude Code only
+
+- **Invoke directly:** `/ad-astra-ghostty` — same as this skill’s `name` in frontmatter. Optional: `/ad-astra-ghostty dark`, `light`, or `system` (see [passing arguments](https://docs.anthropic.com/en/docs/claude-code/skills#pass-arguments-to-skills)).
+- **Repo root with bundled themes:** when this project skill is active, `${CLAUDE_SKILL_DIR}` is the folder containing this `SKILL.md`. Compute the checkout root (where the theme files live):
+
+```bash
+REPO_ROOT="$(cd "${CLAUDE_SKILL_DIR}/../../.." && pwd)"
+# Must contain ad-astra-dark and ad-astra-light
+```
+
+Use `REPO_ROOT` in `cp` commands instead of a hard-coded path when helping from a clone of `https://github.com/ugi-dev/ghostty-ad-astra-theme`.
+
+- **User preference from arguments:** if `$ARGUMENTS` (or the first token after the slash command) is `dark`, `light`, or `system`, pick the matching `theme =` line below without asking again. If missing, ask once or default to **system** (light/dark pair).
+
 ## Before changing anything
 
 1. Confirm **Ghostty is installed** (`ghostty --version` or equivalent). If missing, tell them to install Ghostty first; do not invent binaries.
-2. Resolve **theme source path**: the directory that contains `ad-astra-dark` and `ad-astra-light` (this repo root after clone, or the user’s existing checkout).
+2. Resolve **theme source path**: prefer `REPO_ROOT` from `${CLAUDE_SKILL_DIR}` as above; otherwise the directory containing `ad-astra-dark` and `ad-astra-light` (e.g. current workspace root if both files exist there).
 
 ## Install theme files
 

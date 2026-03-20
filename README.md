@@ -10,7 +10,7 @@ Colors match the **Ad Astra** VS Code themes (cyan/teal + lavender). Official Gh
 
 This repo includes an [Agent Skill](https://docs.anthropic.com/en/docs/claude-code/skills) so coding agents can install the theme for you:
 
-- **Claude Code:** `.claude/skills/ad-astra-ghostty/SKILL.md`
+- **Claude Code:** `.claude/skills/ad-astra-ghostty/SKILL.md` — also loaded as slash command **`/ad-astra-ghostty`** (try `/ad-astra-ghostty system` for light/dark by OS). Project notes for Claude live in [`CLAUDE.md`](CLAUDE.md).
 - **Cursor:** `.cursor/skills/ad-astra-ghostty/SKILL.md`
 
 After you clone the repo, enable project skills in your agent settings if needed, then ask something like: *Install the Ad Astra Ghostty theme from this repo (dark / light / match system).*
